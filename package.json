@@ -15,6 +15,7 @@
     "mysql2": "^3.3.3",
     "node-telegram-bot-api": "^0.61.0",
     "restana": "^4.9.7",
-    "sequelize": "^6.31.1"
+    "sequelize": "^6.31.1",
+    "validatorjs": "^3.22.1"
   }
 }
