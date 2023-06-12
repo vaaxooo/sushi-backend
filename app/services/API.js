@@ -92,6 +92,19 @@ module.exports = {
                 attributes: [[Sequelize.fn('DISTINCT', Sequelize.col('from')), 'from']],
             });
             const citiesArray = cities.map(city => city.from)
+
+            const citiesTo = await Flights.findAll({
+                attributes: [[Sequelize.fn('DISTINCT', Sequelize.col('to')), 'to']],
+            });
+
+            const citiesToArray = citiesTo.map(city => city.to)
+
+            citiesToArray.forEach(city => {
+                if (!citiesArray.includes(city)) {
+                    citiesArray.push(city)
+                }
+            })
+
             return res.send({
                 success: true,
                 data: {
