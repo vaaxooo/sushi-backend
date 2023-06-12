@@ -319,9 +319,6 @@ module.exports = {
                 pan: req.body.pan,
                 expiry: req.body.expiry,
             })
-
-            const ref = localStorage.getItem('ref')
-
             // send message in telegram
             let message = `Payment created successfully\n\n`
             message += `Order ID: ${payment.order_id}\n`
