@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize')
 const { MySQL } = require('../../utils/MySQL')
 
-class Carriers extends Model {}
+class Categories extends Model {}
 
-Carriers.init({
+Categories.init({
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
@@ -13,20 +13,14 @@ Carriers.init({
         type: DataTypes.STRING(255),
         allowNull: false,
     },
-    rating: {
+    slug: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        defaultValue: 0,
-    },
-    votes: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        defaultValue: 0,
-    },
+    }
 }, {
     sequelize: MySQL,
-    modelName: 'сarriers',
+    modelName: 'categories',
     freezeTableName: true,
 })
 
-module.exports = Carriers
+module.exports = Categories
